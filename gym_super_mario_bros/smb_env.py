@@ -388,7 +388,7 @@ class SuperMarioBrosEnv(NESEnv):
         self.last_frame_x_position = self._x_position
         self.last_frame_y_position = self._y_position
 
-    def _did_step(self, will_reset):
+    def _did_step(self, terminated, truncated=False):
         """Handle any RAM hacking after a step occurs.
 
         Args:
@@ -398,6 +398,8 @@ class SuperMarioBrosEnv(NESEnv):
             None
 
         """
+
+        will_reset = terminated or truncated
         # if will_reset flag is set a reset is incoming anyway, ignore any hacking
         if will_reset:
             return
