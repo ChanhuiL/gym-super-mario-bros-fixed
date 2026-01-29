@@ -40,6 +40,7 @@ class SuperMarioBrosEnv(NESEnv):
         target: tuple[int, int] | None = None,
         max_episode_steps: int | None = None,
         truncate_function: Callable | None = None,
+        render_mode: str | None = None
     ):
         """Initialize a new Super Mario Bros environment.
 
@@ -66,6 +67,7 @@ class SuperMarioBrosEnv(NESEnv):
             rom,
             max_episode_steps=max_episode_steps,
             truncate_function=truncate_function,
+            render_mode=render_mode,
         )
         # set the target world, stage, and area variables
         self._target_world, self._target_stage, self._target_area = decode_target(
